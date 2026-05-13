@@ -2,9 +2,9 @@
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![TensorFlow 2.x](https://img.shields.io/badge/tensorflow-2.x-orange.svg)](https://tensorflow.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![NoteBook]](https://colab.research.google.com/drive144M9F5rSc_vdAc_BVAfZvP1dHocBEWru#scrollTo=taHFVCSeQFhV)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/144M9F5rSc_vdAc_BVAfZvP1dHocBEWru#scrollTo=taHFVCSeQFhV)
 
 > **Afarinsene** (from Akan: *afari* = disease, *nsɛn* = detection) is an end-to-end deep learning pipeline for detecting Cocoa Swollen Shoot Virus Disease (CSSVD) and Black Pod disease from smartphone images. Trained on 16132 images from 342 farms across Ghana and Côte d'Ivoire, it achieves **95.8% accuracy** on held-out test data.
 
@@ -174,7 +174,7 @@ afarinsene/                        ← Python package (importable)
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-org/afarinsene.git
+git clone https://github.com/appiahkubis14/afarinsene-cocoa-ai.git
 cd afarinsene
 ```
 
