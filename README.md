@@ -1,4 +1,4 @@
-# 🌿 Afarinsene — Cocoa Disease Detection Pipeline
+# Afarinsene — Cocoa Disease Detection Pipeline
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![TensorFlow 2.x](https://img.shields.io/badge/tensorflow-2.x-orange.svg)](https://tensorflow.org)
