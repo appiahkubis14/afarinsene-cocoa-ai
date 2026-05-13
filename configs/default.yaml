@@ -1,0 +1,151 @@
+# =============================================================================
+# Afarinsene — Default Configuration
+# =============================================================================
+# All pipeline stages read from this file.
+# Override any value via CLI:
+#   python scripts/train.py --set training.epochs=200
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Dataset
+# ---------------------------------------------------------------------------
+data:
+  # Root directory containing class sub-folders (BLACK POD, CSSVD LEAF, etc.)
+  # Override with --data-dir or DATA_DIR env var
+  dir: "DATASET"
+
+  # Sub-folder names → integer labels
+  class_map:
+    "BLACK POD": 0
+    "CSSVD LEAF": 1
+    "HEALTHY LEAF": 2
+    "HEALTHY POD": 3
+
+  # Human-readable class names (must match label order above)
+  class_names:
+    - "Black Pod"
+    - "CSSVD Leaf"
+    - "Healthy Leaf"
+    - "Healthy Pod"
+
+  # Image dimensions fed to the model
+  image_size: 256          # square: image_size × image_size
+  channels: 3              # RGB
+
+  # Train / val / test split ratios (must sum to 1.0)
+  train_ratio: 0.70
+  val_ratio:   0.15
+  test_ratio:  0.15
+
+  random_seed: 42          # for reproducibility of splits
+
+# ---------------------------------------------------------------------------
+# Augmentation  (applied to training set only)
+# ---------------------------------------------------------------------------
+augmentation:
+  enabled: true
+
+  # Keras ImageDataGenerator params
+  rotation_range: 30
+  width_shift_range: 0.2
+  height_shift_range: 0.2
+  horizontal_flip: true
+  vertical_flip: false
+  zoom_range: 0.2
+  brightness_range: [0.8, 1.2]
+  fill_mode: "nearest"
+
+  # MixUp: blend two samples  (set alpha=0 to disable)
+  mixup_alpha: 0.2
+
+  # Class balancing: oversample minority classes to match the largest class
+  balance_classes: true
+
+# ---------------------------------------------------------------------------
+# Model
+# ---------------------------------------------------------------------------
+model:
+  name: "AfarinsenneCNN"
+
+  # Architecture
+  blocks:
+    - filters: 32
+    - filters: 64
+    - filters: 128
+    - filters: 256
+
+  use_global_average_pooling: true   # vs Flatten (GAP = fewer params, less overfitting)
+  dense_units: [256, 128]
+  dropout_rates: [0.5, 0.3]
+  l2_regularization: 0.0001
+
+  # Gradient clipping (set to null to disable)
+  gradient_clip_norm: 1.0
+
+# ---------------------------------------------------------------------------
+# Training
+# ---------------------------------------------------------------------------
+training:
+  epochs: 100
+  batch_size: 32
+
+  optimizer:
+    name: "adamw"
+    learning_rate: 0.001
+    weight_decay: 0.0001
+
+  # EarlyStopping
+  early_stopping:
+    monitor: "val_accuracy"
+    patience: 15
+    restore_best_weights: true
+
+  # ReduceLROnPlateau
+  reduce_lr:
+    monitor: "val_accuracy"
+    factor: 0.5
+    patience: 5
+    min_lr: 1.0e-7
+
+  # Checkpoint saved every epoch; best model saved separately
+  checkpoint_dir: "outputs/checkpoints"
+  checkpoint_filename: "latest_checkpoint.keras"
+  best_model_filename: "best_model.keras"
+
+# ---------------------------------------------------------------------------
+# Evaluation
+# ---------------------------------------------------------------------------
+evaluation:
+  output_dir: "outputs"
+  plots_dir: "outputs/plots"
+  reports_dir: "outputs/reports"
+
+  # DPI for saved figures
+  figure_dpi: 150
+
+  # Number of sample prediction images to show in plot
+  num_sample_predictions: 16
+
+# ---------------------------------------------------------------------------
+# Export (TFLite)
+# ---------------------------------------------------------------------------
+export:
+  output_dir: "outputs/tflite"
+
+  float32:
+    enabled: true
+    filename: "model_float32.tflite"
+
+  quantized:
+    enabled: true
+    filename: "model_quantized.tflite"
+    # Number of representative samples for INT8 calibration
+    calibration_samples: 200
+
+# ---------------------------------------------------------------------------
+# Logging
+# ---------------------------------------------------------------------------
+logging:
+  level: "INFO"              # DEBUG | INFO | WARNING | ERROR
+  log_file: "outputs/run.log"
+  rich_console: true         # pretty coloured output (requires `rich`)

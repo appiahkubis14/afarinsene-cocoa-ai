@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Outputs (keep directory structure but not generated files)
+outputs/checkpoints/*.keras
+outputs/checkpoints/*.h5
+outputs/plots/*.png
+outputs/reports/*.txt
+outputs/reports/*.json
+outputs/tflite/*.tflite
+outputs/run.log
+
+# Dataset (large; committed separately or via DVC)
+DATASET/
+*.npy
+
+# TFLite intermediate
+model_float32.tflite
+model_quantized.tflite
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Environment vars
+.env
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/

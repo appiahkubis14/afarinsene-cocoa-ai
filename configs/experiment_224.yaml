@@ -1,0 +1,15 @@
+# =============================================================================
+# Afarinsene — Experiment Config: 224×224 input (ViT / transfer-learning ready)
+# Inherits everything from default.yaml; only overrides are listed here.
+# =============================================================================
+
+data:
+  image_size: 224
+
+training:
+  epochs: 150
+  batch_size: 16
+
+augmentation:
+  mixup_alpha: 0.2
+  balance_classes: true
