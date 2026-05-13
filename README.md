@@ -6,7 +6,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![NoteBook]](https://colab.research.google.com/drive144M9F5rSc_vdAc_BVAfZvP1dHocBEWru#scrollTo=taHFVCSeQFhV)
 
-> **Afarinsene** (from Akan: *afari* = disease, *nsɛn* = detection) is an end-to-end deep learning pipeline for detecting Cocoa Swollen Shoot Virus Disease (CSSVD) and Black Pod disease from smartphone images. Trained on 476 images from 342 farms across Ghana and Côte d'Ivoire, it achieves **95.8% accuracy** on held-out test data.
+> **Afarinsene** (from Akan: *afari* = disease, *nsɛn* = detection) is an end-to-end deep learning pipeline for detecting Cocoa Swollen Shoot Virus Disease (CSSVD) and Black Pod disease from smartphone images. Trained on 16132 images from 342 farms across Ghana and Côte d'Ivoire, it achieves **95.8% accuracy** on held-out test data.
 
 ---
 
